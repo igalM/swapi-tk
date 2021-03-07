@@ -1,0 +1,6 @@
+.chart {
+    height: 400px;
+    align-items: flex-end;
+    display: flex;
+    padding-top: 70px;
+}

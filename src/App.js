@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './App.css';
+import BarChart from './components/BarChart/BarChart';
+import Table from './components/Table/Table';
+import * as StarwarsActions from './store/actions/starwars';
 
-function App() {
+
+const App = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(StarwarsActions.fetchPlanets());
+    dispatch(StarwarsActions.fetchVehicles());
+  }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Counting every alien in the galaxy takes some time, please be patient!</h1>
+      <Table />
+      <BarChart />
     </div>
   );
 }
